@@ -20,3 +20,12 @@ a:hover {
   color: #FEFEE6;
   font-weight: bolder;
 }
+
+.green-title {
+  color: var(--color-green-ugcs);
+}
+
+.title-complement {
+  text-transform: uppercase;
+  font-size: large;
+}
