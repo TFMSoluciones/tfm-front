@@ -1,17 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToolBarComponent } from './componets/tool-bar/tool-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [
-    ToolBarComponent,
-    FooterComponent
+    FooterComponent,
+    NavBarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatGridListModule,
+    MatIconModule
+  ],
+  exports: [
+    NavBarComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }

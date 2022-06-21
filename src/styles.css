@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 :root {
   --blue: #0089cf;
   --indigo: #6610f2;
@@ -27,6 +29,7 @@
   --color-green-ugcs: #93d84a;
   --color-green-btc: #8fff6d;
   --color-green-background: #203f57;
+  --color-orange-btc: #F7931A;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -40,12 +43,13 @@
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   font-family: var(--font-family-raleway);
-  background-color: var(--black);
+  background-color: var(--black) !important;
   color: var(--white);
   /* font-family: Roboto, "Helvetica Neue", sans-serif; */
 }
@@ -56,8 +60,37 @@ body {
   font-weight: 500;
   line-height: 1.2;
   color: var(--white);
+  word-wrap: break-word;
 }
 
 p {
   color: var(--white);
+  text-align: justify;
+  word-break: break-all;
 }
+
+/* .tfm-toolbar {
+  background-color: var(--black);
+  color: var(--white);
+} */
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.navbar-toggler {
+  color: var(--white);
+}
+
+.navbar-brand {
+  color: var(--color-green-tfm);
+}
+
+ul {
+  color: var(--white);
+}
+
+figcaption {
+  color: var(--white);
+}
+
