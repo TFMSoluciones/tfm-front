@@ -49,6 +49,10 @@
     color: var(--color-ugcs-enterprise);
 }
 
+#perpetual-commander-card {
+    color: var(--color-ugcs-commander);
+}
+
 .btn-ugcs-buy-pro {
     background-color: var(--color-ugcs-pro);
     color: var(--black);
@@ -63,3 +67,9 @@
     background-color: var(--color-ugcs-enterprise);
     color: var(--black);
 }
+
+.btn-ugcs-buy-commander {
+    background-color: var(--color-ugcs-commander);
+    color: var(--black);
+}
+
