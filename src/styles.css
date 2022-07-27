@@ -30,6 +30,9 @@
   --color-green-btc: #8fff6d;
   --color-green-background: #203f57;
   --color-orange-btc: #F7931A;
+  --color-ugcs-pro: #75b726;
+  --color-ugcs-expert: #e47321;
+  --color-ugcs-enterprise: #0089cf;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -66,7 +69,7 @@ body {
 p {
   color: var(--white);
   text-align: justify;
-  word-break: break-all;
+  /* word-break: break-all; */
 }
 
 /* .tfm-toolbar {

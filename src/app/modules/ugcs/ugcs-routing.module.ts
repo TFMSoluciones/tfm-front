@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UgcsMainComponent } from './ugcs-main/ugcs-main.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'ugcs',
+    children: [
+      {
+        path: 'main',
+        component: UgcsMainComponent
+      }
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

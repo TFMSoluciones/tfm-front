@@ -11,6 +11,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
+import { UgcsMainComponent } from './modules/ugcs/ugcs-main/ugcs-main.component';
+import { LicensesComponent } from './modules/ugcs/licenses/licenses.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { HomePageComponent } from './modules/home/home-page/home-page.component'
     MatIconModule,
     MatMenuModule,
     RouterModule.forRoot([
-      { path: '', component: HomePageComponent}
+      { path: '', component: HomePageComponent},
+      { path: 'ugcs/main', component: UgcsMainComponent},
+      { path: 'ugcs/licenses', component: LicensesComponent}
     ])
   ],
   providers: [],
