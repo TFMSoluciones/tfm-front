@@ -5,17 +5,35 @@ on:
   pull_request:
     branches: [ "feature/**", "hotfix/**" ]
 
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: [16.13]
+
+#    steps:
+#    - uses: actions/checkout@v3
+#    - name: test action
+#      uses: colbyhill21/angular-full-ci/@v1.0
+#      with:
+#        node-version: ${{ matrix.node-version }}
+#        testcommand: run test:ci
+
 jobs:
   build:
+    name: Build and Test
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.13]
-
     steps:
-    - uses: actions/checkout@v3
-    - name: test action
-      uses: colbyhill21/angular-full-ci/@v1.0
-      with:
-        node-version: ${{ matrix.node-version }}
-        testcommand: run test:ci
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Use Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: npm ci
+      #- name: Build
+      #  run: npm run build:ci
+      - name: Test
+        run: npm run test:ci
