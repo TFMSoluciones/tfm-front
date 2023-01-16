@@ -13,7 +13,7 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: test action
       uses: colbyhill21/angular-full-ci/@v1.0
       with:
