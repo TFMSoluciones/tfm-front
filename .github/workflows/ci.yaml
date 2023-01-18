@@ -34,6 +34,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npm run watch
+        run: npm run build
       - name: Test
         run: npm run test:ci
