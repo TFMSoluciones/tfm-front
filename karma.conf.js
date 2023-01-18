@@ -39,13 +39,13 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     /* browsers: ['Chrome'], */
-    browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessCI', 'FirefoxHeadless'],
+    browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessCI'/* , 'FirefoxHeadless' */],
     customLaunchers: {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
         flags: ['--no-sandbox']
       },
-      FirefoxHeadless: {
+      /* FirefoxHeadless: {
         base: 'Firefox',
         flags: [
             '-headless',
@@ -53,7 +53,7 @@ module.exports = function (config) {
         prefs: {
           'network.proxy.type': 0
       }
-    }
+    } */
     },
     /* browsers: ['Chrome', 'Chrome_without_security'], */ // You may use 'ChromeCanary', 'Chromium' or any other supported browser
 
