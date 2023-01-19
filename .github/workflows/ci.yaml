@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-test-local:
-    name: Build and Test
+    name: Build and Test Local
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,7 +24,7 @@ jobs:
         run: npm run test:ci
 
   build-and-test-develop:
-    name: Build and Test
+    name: Build and Test Develop
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
