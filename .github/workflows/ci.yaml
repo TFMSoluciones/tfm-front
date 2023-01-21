@@ -4,6 +4,7 @@ on:
     branches: [ "feature/**", "hotfix/**" ]
   pull_request:
     branches: [ "feature/**", "hotfix/**" ]
+    types: [opened, synchronize, reopened]
 
 jobs:
   build-and-test-local:
@@ -41,6 +42,34 @@ jobs:
         run: npm run build
       - name: Test
         run: npm run test:ci
+
+  sonarcloud-local:
+    name: SonarCloud Local
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  sonarcloud-develop:
+    name: SonarCloud Develop
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: develop
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   merge-to-develop:
     name: Merge local branch to develop
