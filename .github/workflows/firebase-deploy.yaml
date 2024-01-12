@@ -6,17 +6,34 @@ on:
       - 'feature/*'
       - develop
       - master
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref != 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+
   build:
     runs-on: ubuntu-latest
+    needs: sonarcloud
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
@@ -28,19 +45,20 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     needs: build
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Install Firebase Tools
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: npm install -g firebase-tools
 
       # - name: Login to Firebase
