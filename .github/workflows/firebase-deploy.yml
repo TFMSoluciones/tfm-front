@@ -1,0 +1,51 @@
+name: Firebase Deploy
+
+on:
+  push:
+    branches:
+      - 'feature/*'
+      - develop
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: npm run build --prod
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Firebase Tools
+        run: npm install -g firebase-tools
+
+      - name: Login to Firebase
+        run: firebase login --no-interactive
+
+      - name: Deploy to Firebase
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: firebase deploy --token "$FIREBASE_TOKEN"
