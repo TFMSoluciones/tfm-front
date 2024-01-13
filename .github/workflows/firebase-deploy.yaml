@@ -115,9 +115,16 @@ jobs:
           path: dist
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+        # uses: w9jds/firebase-action@master
+        # with:
+        #   args: deploy --only hosting
+        # env:
+        #   FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+        #   # GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
-          # GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.GCP_SA_KEY }}"
+          # expires: 30d
+          projectId: tfm-front
