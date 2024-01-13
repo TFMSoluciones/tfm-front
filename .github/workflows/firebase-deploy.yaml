@@ -96,7 +96,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     # if: github.event_name == 'push' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/master')
-    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop' && github.actor != 'actions-user'
     needs: [sonarcloud]
 
     steps:
@@ -127,8 +127,8 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    needs: [build]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master' && github.actor != 'actions-user'
+    # needs: [build]
 
     steps:
       - name: Checkout repository
