@@ -14,7 +14,7 @@
         <!-- <li class="nav-item">
           <a class="nav-link" href="ugcs/main">UgCS</a>
         </li> -->
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="showUgCS">
           <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             UgCS
           </a>
@@ -43,9 +43,9 @@
             <button class="btn btn-outline-success" type="submit">Iniciar sesión</button>
           </form>
         </div> -->
-        
+
       </ul>
-      <div class="dropdown">
+      <div class="dropdown" *ngIf="showAuthentication">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
           data-bs-toggle="dropdown" aria-expanded="false">
           <img src="https://avatars.githubusercontent.com/u/98790008?s=400&u=f0beb6d6e901fedb8acd7180b7f0ace46903865a&v=4"
