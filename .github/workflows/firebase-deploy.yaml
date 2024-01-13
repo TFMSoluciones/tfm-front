@@ -119,11 +119,23 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install Firebase Tools
-        run: npm install -g firebase-tools
+      - name: Install dependencies
+        run: npm install
 
-      - name: Authenticate with Firebase
-        run: firebase login:ci --token "$FIREBASE_TOKEN"
+      - name: Build Angular app
+        run: npm run build --prod
 
-      - name: Deploy to Firebase
-        run: firebase deploy --token "$FIREBASE_TOKEN"
+      - uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      # - name: Install Firebase Tools
+      #   run: npm install -g firebase-tools
+
+      # - name: Authenticate with Firebase
+      #   run: firebase login:ci --token "$FIREBASE_TOKEN"
+
+      # - name: Deploy to Firebase
+      #   run: firebase deploy --token "$FIREBASE_TOKEN"
