@@ -31,9 +31,9 @@ jobs:
           version_format: "${major}.${minor}.${patch}-prerelease${increment}"
           # Optional path to check for changes. If any changes are detected in the path the
           # 'changed' output will true. Enter multiple paths separated by spaces.
-          change_path: "src/my-service"
+          change_path: "src/tfm-front"
           # Named version, will be used as suffix for name version tag
-          namespace: my-service
+          namespace: tfm-front
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
           # If bump_each_commit is also set to true, setting this value will cause the version to increment only if the pattern specified is matched.
