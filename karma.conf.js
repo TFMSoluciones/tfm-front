@@ -10,7 +10,8 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      //require('karma-firefox-launcher')
     ],
     client: {
       jasmine: {
@@ -37,7 +38,32 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    /* browsers: ['Chrome'], */
+    browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessCI'/* , 'FirefoxHeadless' */],
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      },
+      /* FirefoxHeadless: {
+        base: 'Firefox',
+        flags: [
+            '-headless',
+        ],
+        prefs: {
+          'network.proxy.type': 0
+      }
+    } */
+    },
+    /* browsers: ['Chrome', 'Chrome_without_security'], */ // You may use 'ChromeCanary', 'Chromium' or any other supported browser
+
+    // you can define custom flags
+    /* customLaunchers: {
+      Chrome_without_security: {
+        base: 'Chrome',
+        flags: ['--disable-web-security', '--disable-site-isolation-trials']
+      }
+    }, */
     singleRun: false,
     restartOnFileChange: true
   });

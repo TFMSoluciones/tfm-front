@@ -104,5 +104,8 @@
       }
     }
   },
-  "defaultProject": "tfm-front"
+  "defaultProject": "tfm-front",
+  "cli": {
+    "analytics": false
+  }
 }

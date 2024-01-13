@@ -22,4 +22,16 @@ describe('HomePageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a main title', () => {
+    const titleElement = fixture.nativeElement.querySelector('h1#main-text');
+    expect(titleElement).toBeTruthy();
+    expect(titleElement.textContent).toContain('TFM Soluciones');
+  });
+
+  it('should have a paragraph with company description', () => {
+    const descriptionElement = fixture.nativeElement.querySelector('.text-center');
+    expect(descriptionElement).toBeTruthy();
+    expect(descriptionElement.textContent).toContain('Empresa dedicada al manejo y explotación de servicios relacionados con equipos UAVs');
+  });
 });
