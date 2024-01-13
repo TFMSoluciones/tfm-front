@@ -9,6 +9,7 @@ export class NavBarComponent implements OnInit {
 
   @Input() showUgCS: boolean = true;
   @Input() showAuthentication: boolean = true;
+  @Input() showServices: boolean = true;
 
   constructor() { }
 
